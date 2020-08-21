@@ -269,7 +269,7 @@ If you have already installed ROS and created a workspace, please comment out th
 
  Repo Folder | Workspace Folder
 ------------ | -------------
-<img src="media/folder1.png" alt="Workspace Folder"> |<img src="media/folder2.png" alt="Workspace Folder">
+<img src="media/folder1.png" alt="Repository Folder"> |<img src="media/folder2.png" alt="Workspace Folder">
 
 
 
