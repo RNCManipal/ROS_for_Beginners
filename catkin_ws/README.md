@@ -28,6 +28,7 @@ Getting started
     3.1 [Setting up Git](#sec31) <br>
     3.2 [Workspace](#sec32) <br>
 <br>
+
 # **Getting Started**
 
 Please install Ubuntu (18.04 or 20.04) on a system
