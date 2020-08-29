@@ -1,0 +1,2 @@
+string test_custom_msg
+float32 counter
