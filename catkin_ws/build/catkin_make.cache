@@ -1,2 +1,2 @@
-
+cpp_pkg1
 -DCATKIN_DEVEL_PREFIX=/home/malika/Desktop/ROS_for_Beginners/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/malika/Desktop/ROS_for_Beginners/catkin_ws/install -G Unix Makefiles
