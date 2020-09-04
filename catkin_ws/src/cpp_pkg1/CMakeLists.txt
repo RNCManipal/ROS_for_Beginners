@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   geometry_msgs
   turtlesim
+  message_generation
+  std_msgs
+  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -48,11 +51,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  ClubMsg.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -69,10 +71,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  cpp_pkg1  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES cpp_pkg1
-#  CATKIN_DEPENDS roscpp rospy
+  CATKIN_DEPENDS roscpp rospy message_runtime std_msgs
 #  DEPENDS system_lib
 )
 
@@ -137,6 +139,9 @@ include_directories(
 add_executable(ArgsParser src/ArgsParser.cpp)
 add_executable(SimplePublisher src/SimplePublisher.cpp)
 add_executable(SimpleSubscriber src/SimpleSubscriber.cpp)
+add_executable(ClubMsgSubscriber src/ClubMsgSubscriber.cpp)
+add_executable(ClubMsgPublisher src/ClubMsgPublisher.cpp)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -149,6 +154,8 @@ add_executable(SimpleSubscriber src/SimpleSubscriber.cpp)
 add_dependencies(ArgsParser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(SimplePublisher ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(SimpleSubscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ClubMsgSubscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ClubMsgPublisher ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(
@@ -165,6 +172,17 @@ target_link_libraries(
   SimpleSubscriber
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(
+  ClubMsgSubscriber
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(
+  ClubMsgPublisher
+  ${catkin_LIBRARIES}
+)
+
 
 
 #############
